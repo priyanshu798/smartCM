@@ -9,5 +9,5 @@ public class SmartCmApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmartCmApplication.class, args);
 	}
+		}
 
-}

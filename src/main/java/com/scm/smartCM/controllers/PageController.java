@@ -2,6 +2,7 @@ package com.scm.smartCM.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -29,4 +30,21 @@ public class PageController {
         System.out.println("Services PAge");
         return "services";
     }
+
+    @GetMapping("/contact")
+    public String contact() {
+        System.out.println("Services PAge");
+        return "services";
+    }
+    
+    @GetMapping("/login")
+    public String login() {
+        System.out.println("Login PAge");
+        return "login";
+    }
+        @GetMapping("/register")
+    public String register() {
+        System.out.println("Register PAge");
+        return "register";
+}
 }

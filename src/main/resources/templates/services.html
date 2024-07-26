@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base :: parent(~{::#content} , ~{::title},  ~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Services </title>
 </head>
 <body>
-    <div th:replace = "~{base :: parent(~{::section})}">
-        <section>
-            <h1>Dynamic services passed to baswee</h1>
-        </section>
-    </div>>
-   
+    <div id="content">
+        <h1>Services page </h1>
+        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam repudiandae voluptatum fuga est eos repellat sunt, assumenda neque. Magni corrupti quidem perspiciatis cumque accusamus consectetur?</h2>
+    </div>
+    <script>
+        console.log("services page")
+    </script>
 </body>
 </html>
