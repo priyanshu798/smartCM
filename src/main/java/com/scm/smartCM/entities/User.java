@@ -31,6 +31,7 @@ public class User {
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
+    @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
     private String providerUserId;
 
