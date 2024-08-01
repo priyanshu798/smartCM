@@ -2,6 +2,10 @@ package com.scm.smartCM.controllers;
 
 import com.scm.smartCM.forms.UserForm;
 
+import com.scm.smartCM.helpers.Message;
+import com.scm.smartCM.helpers.MessageType;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,8 +60,8 @@ public class PageController {
     }
  
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm) {
-        System.out.println("register");
+    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session) {
+        System.out.println("regis ter");
         //fetch form data
         System.out.println(userForm);
         //validate
@@ -65,6 +69,8 @@ public class PageController {
         //save to db
         
         //msg = reg success
+        Message message = Message.builder().content("Registration succesfull!").type(MessageType.blue).build();
+        session.setAttribute("message", message);
         //regirect login page
         return "redirect:/register";
     }
