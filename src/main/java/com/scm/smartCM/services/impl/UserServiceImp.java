@@ -1,12 +1,14 @@
 package com.scm.smartCM.services.impl;
 
 import com.scm.smartCM.entities.User;
+import com.scm.smartCM.helpers.AppConstants;
 import com.scm.smartCM.helpers.ResourcesNotFoundException;
 import com.scm.smartCM.repositories.UserRepo;
 import com.scm.smartCM.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -20,12 +22,18 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImp.class);
 
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
+        logger.info(user.getProvider().toString());
         return userRepo.save(user);
     }
 

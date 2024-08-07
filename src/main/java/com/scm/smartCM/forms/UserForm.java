@@ -30,7 +30,7 @@ public class UserForm {
     @Size(min = 6, message = "Min 6 characters are required")
     private String password;
 
-    @NotBlank(message = "About is required")
+    @NotBlank(message = "Abo n s required")
     private String about;
     
     @NotBlank(message = "Phone number is required")
