@@ -21,6 +21,7 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     private UserRepo userRepo;
+
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -33,9 +34,13 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User saveUser(User user) {
+        //generate random user id
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(true);
+
+        //set user role
         user.setRoleList(List.of(AppConstants.ROLE_USER));
         logger.info(user.getProvider().toString());
         return userRepo.save(user);
