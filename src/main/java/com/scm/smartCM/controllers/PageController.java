@@ -53,6 +53,7 @@ public class PageController {
         return "services";
     }
 
+
     @GetMapping("/contact")
     public String contact() {
         System.out.println("Services PAge");
@@ -72,7 +73,7 @@ public class PageController {
         System.out.println("Register PAge");
         return "register";
     }
-
+    //processing register
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
     public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult,
             HttpSession session) {
